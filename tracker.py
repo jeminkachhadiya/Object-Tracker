@@ -36,10 +36,10 @@ class Tracker:
 
         dets = []
         for bbox_id, bbox in enumerate(bboxes):
-            dets.append(Detection(bbox, scores[bbox_id], features[bbox_id]))
+            dets.append(Detection(bbox, scores[bbox_id], features[bbox_id], class_id))
 
         self.tracker.predict()
-        self.tracker.update(dets)
+        self.tracker.update(dets, class_id)
         self.update_tracks()
 
     def update_tracks(self):

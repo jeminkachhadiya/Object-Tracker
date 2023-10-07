@@ -4,12 +4,12 @@ import random
 from ultralytics import YOLO
 from tracker import Tracker
 
-video_path = os.path.join('.','data','test1_cut.mp4')
+video_path = os.path.join('.','data','test_cut.mp4')
 result_path = os.path.join('.','result.mp4')
 
 cap = cv2.VideoCapture(video_path)
 ret, frame = cap.read()
-classes = ["Civilian", "Soldier"]
+classes = ["Soldier", "Civilian"]
 cap_out = cv2.VideoWriter(result_path, cv2.VideoWriter_fourcc(*'MP4V'), cap.get(cv2.CAP_PROP_FPS), (frame.shape[1], frame.shape[0]))
 model = YOLO('surveillance.pt')
 tracker = Tracker()
@@ -35,7 +35,7 @@ while ret:
         bbox = track.bbox
         x1, y1, x2, y2 = bbox
         track_id = track.track_id
-        class_id = track.class_id
+        class_id = track.class_id if not isinstance(track.class_id, list) else track.class_id[0]
         label = f"{classes[class_id]}: {track_id}"
         cv2.rectangle(frame, (int(x1), int(y1)), (int(x2), int(y2)), (colors[track_id % len(colors)]), 2)
         cv2.putText(frame, label, (int(x1), int(y1)), cv2.FONT_HERSHEY_SIMPLEX, 1, (colors[track_id % len(colors)]), 2, cv2.LINE_AA)

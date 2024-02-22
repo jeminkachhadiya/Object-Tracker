@@ -21,10 +21,9 @@ class Tracker:
         self.encoder = gdet.create_box_encoder(encoder_model_filename, batch_size=1)
 
     def update(self, frame, detections):
-
         if len(detections) == 0:
             self.tracker.predict()
-            self.tracker.update([])  
+            self.tracker.update([], None)
             self.update_tracks()
             return
 
@@ -37,7 +36,6 @@ class Tracker:
         dets = []
         for bbox_id, bbox in enumerate(bboxes):
             dets.append(Detection(bbox, scores[bbox_id], features[bbox_id], class_id))
-
         self.tracker.predict()
         self.tracker.update(dets, class_id)
         self.update_tracks()
@@ -48,11 +46,9 @@ class Tracker:
             if not track.is_confirmed() or track.time_since_update > 1:
                 continue
             bbox = track.to_tlbr()
-
             id = track.track_id
             class_id = track.class_id
             tracks.append(Track(id, bbox, class_id))
-
         self.tracks = tracks
 
 class Track:

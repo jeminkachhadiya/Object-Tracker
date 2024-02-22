@@ -39,7 +39,6 @@ while ret:
         label = f"{classes[class_id]}: {track_id}"
         cv2.rectangle(frame, (int(x1), int(y1)), (int(x2), int(y2)), (colors[track_id % len(colors)]), 2)
         cv2.putText(frame, label, (int(x1), int(y1)), cv2.FONT_HERSHEY_SIMPLEX, 1, (colors[track_id % len(colors)]), 2, cv2.LINE_AA)
-
     cv2.imshow("Display", frame)
     cap_out.write(frame)
     if cv2.waitKey(1) & 0xFF == ord("q"):
@@ -48,4 +47,4 @@ while ret:
 
 cap.release()
 cap_out.release()
-cv2.destroyAllWindows
+cv2.destroyAllWindows()

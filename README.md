@@ -74,10 +74,6 @@ A sample tracking result can be found in `test_result.mp4`, which demonstrates t
 - `images/`: Contains validation and performance metrics
 - `Inferences/`: Directory for inference results
 
-## License
-
-[Your License Here]
-
 ## Acknowledgments
 
 - YOLO: https://github.com/ultralytics/yolov8

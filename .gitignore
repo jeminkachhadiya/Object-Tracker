@@ -1,19 +1,4 @@
 # Repo-specific GitIgnore ----------------------------------------------------------------------------------------------
-*.jpg
-*.jpeg
-*.png
-*.bmp
-*.tif
-*.tiff
-*.heic
-*.JPG
-*.JPEG
-*.PNG
-*.BMP
-*.TIF
-*.TIFF
-*.HEIC
-
 *.mov
 *.MOV
 *.avi
@@ -26,13 +11,9 @@
 storage.googleapis.com
 runs/*
 data/*
-data/images/*
 !data/*.yaml
 !data/hyps
 !data/scripts
-!data/images
-!data/images/zidane.jpg
-!data/images/bus.jpg
 !data/*.sh
 
 results*.csv
@@ -41,7 +22,6 @@ results*.csv
 coco/
 coco128/
 VOC/
-simple_images/
 
 coco2017labels-segments.zip
 test2017.zip
